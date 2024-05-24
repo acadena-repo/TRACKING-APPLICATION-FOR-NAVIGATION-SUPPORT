@@ -37,7 +37,7 @@ class UserInterface:
                     self.running = False
                     break
                 elif event.key == pygame.K_t:
-                    new_position = Vector2(420, 380)
+                    new_position = Vector2(350, 470)
                     target = Target(self.state, new_position)
                     self.state.add_target(target)
                     self.tracking = True
@@ -55,14 +55,15 @@ class UserInterface:
     def update(self):
         for command in self.commands:
             command.update()
-
         self.commands.clear()
+        if self.tracking:
+            self.state.targets[0].animate()
 
     def render(self):
         self.window.fill((255, 255, 255))
-        self.state.compass.render(self.window)
         if self.tracking:
             self.state.targets[0].render(self.window)
+        self.state.compass.render(self.window)
         self.faceplate.render(self.window)
 
         pygame.display.update()

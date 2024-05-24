@@ -3,6 +3,14 @@ import pygame
 from pygame.math import Vector2
 
 
+def load_animation():
+    animation_images = []
+    for i in range(7):
+        image = pygame.image.load(f"./assets/target/{i}.png")
+        animation_images.append(image)
+    return animation_images
+
+
 class Unit(ABC):
     def __init__(self, state, position):
         self.state = state
@@ -42,10 +50,24 @@ class Target(Unit):
     def __init__(self, state, position):
         super().__init__(state, position)
         self.relative = Vector2(0, 0)
+        self.frameIdx = 0
+        self.refresh = 150
+        self.timer = pygame.time.get_ticks()
+        self.images = load_animation()
+        self.target = self.images[self.frameIdx]
+
+    def animate(self):
+        self.target = self.images[self.frameIdx]
+        if pygame.time.get_ticks() - self.timer > self.refresh:
+            self.frameIdx += 1
+            self.timer = pygame.time.get_ticks()
+
+        if self.frameIdx >= len(self.images):
+            self.frameIdx = 0
 
     def render(self, surface):
-        pygame.draw.circle(surface, (30, 144, 255),
-                           self.relative, 8)
+        # pygame.draw.circle(surface, (30, 144, 255), self.relative, 8)
+        surface.blit(self.target, self.relative)
 
 
 class Faceplate(Unit):

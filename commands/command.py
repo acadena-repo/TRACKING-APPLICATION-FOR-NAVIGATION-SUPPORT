@@ -31,5 +31,3 @@ class NeedleCommand(Command):
             reference = Vector2(465, 465) - targetTile
             angle = math.atan2(reference.x, reference.y) * 180 / math.pi
             compass.orientation = angle
-            print(
-                compass.position, self.displacement['orientation'], self.target.position, targetTile, difference)
