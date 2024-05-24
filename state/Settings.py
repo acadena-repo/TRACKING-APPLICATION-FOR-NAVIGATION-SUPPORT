@@ -10,7 +10,7 @@ constants = {
 
 Structure = namedtuple('Settings', [
     'scan',
-    'meter2pizels',
+    'meter2pixels',
     'tileSize',
     'displayArea'
 ])

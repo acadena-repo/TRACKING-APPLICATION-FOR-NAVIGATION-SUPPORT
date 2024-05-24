@@ -1,1 +1,1 @@
-from command import NeedleCommand
+from .command import NeedleCommand

@@ -1,7 +1,12 @@
+import os
+from interfaces import UserInterface
+
+os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 
 def main():
-    pass
+    UI = UserInterface()
+    UI.run()
 
 
 if __name__ == '__main__':
