@@ -6,7 +6,7 @@ from pygame.math import Vector2
 def load_animation():
     animation_images = []
     for i in range(7):
-        image = pygame.image.load(f"./assets/target/{i}.png")
+        image = pygame.image.load(f"./assets/target/{i}.png").convert_alpha()
         animation_images.append(image)
     return animation_images
 

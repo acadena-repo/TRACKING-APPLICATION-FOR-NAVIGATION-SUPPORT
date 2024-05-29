@@ -63,6 +63,7 @@ class UserInterface:
         self.window.fill((255, 255, 255))
         if self.tracking:
             self.state.targets[0].render(self.window)
+        self.state.panel.draw(self.window)
         self.state.compass.render(self.window)
         self.faceplate.render(self.window)
 

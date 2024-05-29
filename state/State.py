@@ -1,6 +1,13 @@
+import pygame
 from pygame.math import Vector2
 from .Settings import Settings
-from units import Compass
+from units import Compass, DisplayInfo
+
+
+def get_panel():
+    panel_group = pygame.sprite.Group()
+    panel_group.add(DisplayInfo(275, 5, -999, 0.0, "None"))
+    return panel_group
 
 
 class State:
@@ -8,6 +15,7 @@ class State:
         self.config = Settings()
         self.compass = Compass(self, Vector2(390, 390))
         self.targets = []
+        self.panel = get_panel()
 
     @property
     def displayWidth(self):
